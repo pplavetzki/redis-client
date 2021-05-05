@@ -1,7 +1,8 @@
 ENV    ?= dev
 ACR    := pplavetzki
-AUTO_NAME = ${ACR}.azurecr.io/${ENV}
-TAG    := $(shell date +"%Y%m%d.${GITHUB_RUN_NUMBER}")
+AUTO_NAME ?= ${ACR}.azurecr.io/${ENV}
+# TAG    := $(shell date +"%Y%m%d.${GITHUB_RUN_NUMBER}")
+TAG    := $(shell git rev-parse HEAD | cut -c 1-8)
 TEN    := $(TENANT)
 SP_PSW := $(SP_PASSWORD)
 
